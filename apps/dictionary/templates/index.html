@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block style %}
+	<link rel="stylesheet" type="text/css" href="{% static "DataTables/datatables.min.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+{% endblock %}
+
+{% block content %}
+	<section class="container main">
+	    <table id="instrumentos" class="display table-bordered table-responsive">
+	        <thead>
+	        <tr>
+	            <th>Nombre</th>
+	            <th>Definición</th>
+	            <th>Imagen</th>
+	        </tr>
+	        </thead>
+	        <tbody>
+	        {% for instrument in instruments %}
+	            <tr>
+	                <td>{{ instrument.name }}</td>
+	                <td>{{ instrument.definition }}</td>
+	                <td>
+	                	<img src="{{ instrument.image.url }}" alt="instrumento" />
+	                </td>
+	            </tr>
+	        {% endfor %}
+	        </tbody>
+	    </table>
+	</section>
+{% endblock %}
+
+{% block scripts %}
+	<script src="{% static "DataTables/datatables.min.js" %}" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="{% static "js/scripts.js" %}" type="text/javascript" charset="utf-8" async defer></script>
+{% endblock %}
