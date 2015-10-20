@@ -13,6 +13,7 @@ class Instrumentation(models.Model):
 	"""Permite dar de alta un conceptp con definición e imagen"""
 	name = models.CharField('Nombre', max_length = 200, unique = True)
 	definition = models.TextField('Definición')
+	tags = models.CharField('Tags', max_length=200)
 	image = models.FileField(upload_to = get_path_instrumentation)
 
 	class Meta:
